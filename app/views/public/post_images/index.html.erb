@@ -1,7 +1,7 @@
 <% @post_images.each do |post_image| %>
   <div>
     <%= image_tag post_image.get_image %>
-    <p>投稿ユーザー画像：<%= image_tag 'no_image.jpg' %></p>
+    <p>投稿ユーザー画像：<%= image_tag 'sample.jpg' %></p>
     <p>タイトル：<%= post_image.title %></p>
     <p>説明：<%= post_image.caption %></p>
     <p>ユーザーネーム：<%= post_image.user.name %></p>
