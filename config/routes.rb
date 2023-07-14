@@ -5,7 +5,8 @@ Rails.application.routes.draw do
   scope module: 'public' do
     root "homes#top"
 
-    resources :post_images, only: [:new, :create, :index, :show]
+    resources :post_images, only: [:new, :create, :index, :show, :destroy]
+    resources :users, only: [:show, :edit]
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
