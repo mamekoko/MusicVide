@@ -5,9 +5,17 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :post_images, dependent: :destroy
+
+  has_many :likes, dependent: :destroy
+  has_many :liked_post_images, through: :likes, source: :post_image
+
   has_many :post_comments, dependent: :destroy
 
   has_one_attached :profile_image
+
+  def liked_by?(post_image_id)
+    likes.where(post_image_id: post_image_id).exists?
+  end
 
   def get_profile_image(width, height)
     unless profile_image.attached?
