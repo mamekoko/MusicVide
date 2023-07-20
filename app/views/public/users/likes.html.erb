@@ -1,0 +1,10 @@
+<h1><%= @user.name %>さんのいいね一覧</h1>
+
+<ul>
+  <% @liked_post_images.each do |post_image| %>
+    <li>
+      <%= link_to post_image.title, post_image_path(post_image) %>
+      <%= image_tag post_image.image.variant(resize: '100x100') %>
+    </li>
+  <% end %>
+</ul>

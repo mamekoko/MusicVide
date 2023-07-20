@@ -1,14 +1,15 @@
 <% if !user_signed_in? %>
   <i class="fa fa-heart like-btn"></i>
   <%= post_image.likes.length %>
-<% elsif current_user.liked_by?(post_image.id) %>
-  <%= link_to post_image_likes_path(post_image), class: "like-link", method: :delete, remote: true do %>
-    <i class="fa fa-heart unlike-btn"></i>
-  <% end %>
-  <%= post_image.likes.length %>
 <% else %>
-  <%= link_to post_image_likes_path(post_image), class: "like-link", method: :post, remote: true do %>
-    <i class="fa fa-heart like-btn"></i>
+  <% if current_user.liked_by?(post_image.id) %>
+    <%= link_to post_image_likes_path(post_image), class: "like-link", method: :delete, remote: true do %>
+      <i class="fa fa-heart unlike-btn"></i>
+    <% end %>
+  <% else %>
+    <%= link_to post_image_likes_path(post_image), class: "like-link", method: :post, remote: true do %>
+      <i class="fa fa-heart like-btn"></i>
+    <% end %>
   <% end %>
   <%= post_image.likes.length %>
 <% end %>

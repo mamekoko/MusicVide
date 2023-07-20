@@ -6,14 +6,18 @@ class Public::LikesController < ApplicationController
   def create
     @post_image.likes.create(user_id: current_user.id)
 
-
+     respond_to do |format|
+      format.js { render json: @post_image }
+    end
   end
 
   def destroy
     like = Like.find_by(user_id: current_user.id, post_image_id: @post_image.id)
     like&.destroy
 
-
+    respond_to do |format|
+      format.js { render json: @post_image }
+    end
   end
 
   private
