@@ -1,0 +1,7 @@
+<% @post_images.each do |post_image| %>
+  <div>
+    <%= image_tag post_image.image.variant(resize: "200x") %>
+    <h2><%= post_image.title %></h2>
+    <p><%= post_image.caption %></p>
+  </div>
+<% end %>
