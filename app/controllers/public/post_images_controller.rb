@@ -15,7 +15,7 @@ class Public::PostImagesController < ApplicationController
 
   def index
     if user_signed_in?
-      @post_images = PostImage.where(is_public: true).order(created_at: :desc)
+      @post_images = PostImage.where(is_public: true).order(created_at: :desc).page(params[:page])
     else
       @post_images = PostImage.none
     end
