@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   scope module: 'public' do
     root "homes#top"
 
-    resources :post_images, only: [:new, :create, :index, :show, :destroy] do
+    resources :post_images, only: [:index, :show, :new, :create, :update, :destroy] do
       resource :likes, only: [:create, :destroy]
       resources :post_comments, only: [:create, :destroy]
     end
