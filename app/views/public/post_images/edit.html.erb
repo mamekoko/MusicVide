@@ -2,6 +2,11 @@
   <%= form.radio_button :is_public, true %> 公開
   <%= form.radio_button :is_public, false %> 非公開
 
+  <% if @post_image.image.attached? %>
+    <h4>現在の画像</h4>
+    <%= image_tag @post_image.image, size: '200x200' %>
+  <% end %>
+
   <h4>画像</h4>
   <%= form.file_field :image, accept: "image/*" %>
   <h4>タイトル</h4>
