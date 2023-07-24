@@ -1,1 +1,1 @@
-$('#like_<%= @post_image.id %>').html("<%= j(render partial: 'likes/like', locals: { post_image: @post_image }) %>");
+$('#like<%= @post_image.id %>').html("<%= j(render partial 'likes/like', locals: { post_image: @post_image }) %>");

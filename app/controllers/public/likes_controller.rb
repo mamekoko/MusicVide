@@ -12,12 +12,15 @@ class Public::LikesController < ApplicationController
   end
 
   def destroy
-    like = Like.find_by(user_id: current_user.id, post_image_id: @post_image.id)
-    like&.destroy
+  like = Like.find_by(user_id: current_user.id, post_image_id: @post_image.id)
 
-    respond_to do |format|
-      format.js { render json: @post_image }
-    end
+  if like
+    like.destroy
+    render json: @post_image
+  else
+    # エラー処理（例：likeが見つからない場合の処理）
+    render json: { error: 'Like not found' }, status: :not_found
+  end
   end
 
   private
