@@ -15,7 +15,21 @@ class User < ApplicationRecord
 
   has_one_attached :profile_image
 
+  def admin?
+    admin
+  end
 
+  def suspend_account
+    update(suspended: true)
+  end
+
+  def unsuspend_account
+    update(suspended: false)
+  end
+
+  def suspended?
+    suspended
+  end
 
   def liked_by?(post_image_id)
     likes.where(post_image_id: post_image_id).exists?

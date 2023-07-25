@@ -1,9 +1,16 @@
 <h1>会員詳細</h1>
 
-<p><strong>ID:</strong> <%= @user.id %></p>
-<p><strong>Email:</strong> <%= @user.email %></p>
-<p><strong>Name:</strong> <%= @user.name %></p>
-<p><strong>Admin:</strong> <%= @user.admin? ? 'Yes' : 'No' %></p>
-<!-- 他のカラムを表示する場合はここに追記 -->
+<p>Name: <%= @user.name %></p>
+<p>Email: <%= @user.email %></p>
+
+<h1>User Details</h1>
+
+<p>Name: <%= @user.name %></p>
+<p>Email: <%= @user.email %></p>
+<p>Status: <%= @user.suspended ? 'Suspended' : 'Active' %></p>
+
+<% if current_user.admin? %>
+  <%= link_to 'Toggle Suspended', toggle_suspended_admin_user_path(@user), method: :patch %>
+<% end %>
 
 <%= link_to 'Back', admin_users_path %>

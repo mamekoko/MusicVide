@@ -1,11 +1,18 @@
 Rails.application.routes.draw do
 
-  
+  devise_for :admin_users, controllers: {
+    sessions: 'admin/sessions'
+  }
 
   devise_for :users
 
   namespace :admin do
-    resources :users, only: [:index, :show, :update, :destroy]
+    get 'sign_in', to: 'sessions#new'
+    resources :users, only: [:index, :show] do
+      member do
+        patch :toggle_suspended
+      end
+    end
   end
 
   scope module: 'public' do

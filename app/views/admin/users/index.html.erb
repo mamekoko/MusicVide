@@ -6,9 +6,7 @@
       <th>ID</th>
       <th>Email</th>
       <th>Name</th>
-      <th>Admin</th>
-      <!-- 他のカラムを追加する場合はここに追記 -->
-      <th>Actions</th>
+      <!-- 他の属性を追加 -->
     </tr>
   </thead>
   <tbody>
@@ -17,12 +15,7 @@
         <td><%= user.id %></td>
         <td><%= user.email %></td>
         <td><%= user.name %></td>
-        <td><%= user.admin? ? 'Yes' : 'No' %></td>
-        <!-- 他のカラムを表示する場合はここに追記 -->
-        <td>
-          <%= link_to 'Show', admin_user_path(user) %>
-          <%= link_to 'Delete', admin_user_path(user), method: :delete, data: { confirm: 'Are you sure?' } %>
-        </td>
+        <!-- 他の属性を追加 -->
       </tr>
     <% end %>
   </tbody>
