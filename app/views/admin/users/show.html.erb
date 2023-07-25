@@ -1,0 +1,9 @@
+<h1>会員詳細</h1>
+
+<p><strong>ID:</strong> <%= @user.id %></p>
+<p><strong>Email:</strong> <%= @user.email %></p>
+<p><strong>Name:</strong> <%= @user.name %></p>
+<p><strong>Admin:</strong> <%= @user.admin? ? 'Yes' : 'No' %></p>
+<!-- 他のカラムを表示する場合はここに追記 -->
+
+<%= link_to 'Back', admin_users_path %>

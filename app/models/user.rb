@@ -4,6 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+
+
   has_many :post_images, dependent: :destroy
 
   has_many :likes, dependent: :destroy
@@ -12,6 +14,8 @@ class User < ApplicationRecord
   has_many :post_comments, dependent: :destroy
 
   has_one_attached :profile_image
+
+
 
   def liked_by?(post_image_id)
     likes.where(post_image_id: post_image_id).exists?
