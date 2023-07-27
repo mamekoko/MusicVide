@@ -1,32 +1,33 @@
 <div class="container">
-  <div class="row">
-    <div class="col-md-5 col-sm-10 mx-2 mx-sm-auto">
+  <div class="row no-gutters">
+    <div class="col-md-5 col-sm-10 mx-2 mx-sm-auto shadow-lg rounded px-0 my-5">
 
 
-    <h1>投稿</h1>
-
-    <% if @post_image.errors.any? %>
-      <%= @post_image.errors.count %>件のエラーが発生しました
-      <ul>
-        <% @post_image.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
+    <h2 class="text-dark bg-light p-4 mb-0">投稿</h2>
+      <div class="form-body p-4">
+        <% if @post_image.errors.any? %>
+          <%= @post_image.errors.count %>件のエラーが発生しました
+          <ul>
+            <% @post_image.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
         <% end %>
-      </ul>
-    <% end %>
+        <%= form_with(model: @post_image, local: true) do |form| %>
 
-    <%= form_with(model: @post_image, local: true) do |form| %>
-      <%= form.radio_button :is_public, true %> 公開
-      <%= form.radio_button :is_public, false %> 非公開
+          <%= form.radio_button :is_public, true %> 公開
+          <%= form.radio_button :is_public, false %> 非公開
 
-      <h4>画像</h4>
-      <%= form.file_field :image, accept: "image/*" %>
-      <h4>タイトル</h4>
-      <%= form.text_field :title %>
-      <h4>説明</h4>
-      <%= form.text_area :caption %>
+          <h5>画像</h5>
+          <%= form.file_field :image, accept: "image/*" %>
+          <h5>タイトル</h5>
+          <%= form.text_field :title, class:"form-control", placeholder:"タイトル名" %>
+          <h5>説明</h5>
+          <%= form.text_area :caption, class:"form-control", rows:"3", placeholder:"テキスト入力" %>
 
-      <%= form.submit '投稿' %>
-    <% end %>
+          <%= form.submit '投稿', class:"btn btn-lg btn-block btn-info mt-4" %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

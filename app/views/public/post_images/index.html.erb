@@ -2,7 +2,7 @@
     <% @post_images.each do |post_image| %>
       <div class="card w-50 mx-auto mt-4 shadow-lg">
         <%= link_to post_image_path(post_image.id) do %>
-          <%= image_tag post_image.get_image %>
+          <%= image_tag post_image.get_image, class:"card-img-top"; %>
         <% end %>
         <div class="card-body">
           <div class="row">
@@ -12,7 +12,7 @@
             <div class="col-10">
               <p class="card-title">タイトル：<%= post_image.title %></p>
               <p class="card-text">説明：<%= post_image.caption %></p>
-              <span><i class="fa-solid fa-user"></i><%= post_image.user.name %> ｜ </span>
+              <span><i class="fa-regular fa-user"></i></i><%= post_image.user.name %> ｜ </span>
               <span><%= link_to "#{post_image.post_comments.count} コメント", post_image_path(post_image.id) %></span>
             </div>
           </div>
@@ -20,5 +20,6 @@
       </div>
     <% end %>
 
-    <%= paginate @post_images %>
+          <%= paginate @post_images, class:"mt-5" %>
+
 </div>

@@ -1,10 +1,21 @@
-<h1><%= @user.name %>さんのいいね一覧</h1>
+<div class="card-list-container py-5">
+  <div class="card-body">
+    <div class="row">
+      <div class="col-md-6 mx-auto">
+        <h2><i class="fa-regular fa-user"></i></i><%= @user.name %>さんの<i class="fa-regular fa-heart text-info"></i>した投稿</h2>
+      </div>
+    </div>
+  </div>
 
-<ul>
+
   <% @liked_post_images.each do |post_image| %>
-    <li>
-      <%= link_to post_image.title, post_image_path(post_image) %>
-      <%= image_tag post_image.image.variant(resize: '100x100') %>
-    </li>
+  <div class="card-body">
+    <div class="row">
+      <div class="col-md-6 mx-auto">
+        <%= image_tag post_image.image.variant(resize: '100x100') %>
+        <p class="card-title"><%= link_to post_image.title, post_image_path(post_image) %></p>
+      </div>
+    </div>
+  </dib>
   <% end %>
-</ul>
+</div>

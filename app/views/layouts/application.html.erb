@@ -20,22 +20,26 @@
 
       <% if user_signed_in? %>
         <div class="container">
-        <span>
+        <strong>
           <%= link_to "Scentopia", root_path, class: "navbar-brand text-info" %>
-        </span>
+        </strong>
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ml-auto">
-              <li class="nav-link text-light">
-                <%= link_to '投稿フォーム', new_post_image_path, class: "text-info" %>
+              <li class="nav-link text-info">
+                <%= link_to '投稿', new_post_image_path, class: "text-info" %>
+                <i class="fa-solid fa-plus"></i>
               </li>
-              <li class="nav-link text-light">
+              <li class="nav-link text-info">
                 <%= link_to 'マイページ', user_path(current_user.id), class: "text-info" %>
+                <i class="fa-regular fa-user"></i>
               </li>
-              <li class="nav-link text-light">
-                <%= link_to "いいねした投稿", likes_user_path(current_user.id), class: "text-info" %>
+              <li class="nav-link text-info">
+                <%= link_to "いいね", likes_user_path(current_user.id), class: "text-info" %>
+                <i class="fa-regular fa-heart"></i>
               </li>
-              <li class="nav-link text-light">
+              <li class="nav-link text-info">
                 <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "text-info" %>
+                <i class="fa-solid fa-arrow-right-from-bracket"></i>
               </li>
             </ul>
           </div>
@@ -47,11 +51,13 @@
         </span>
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ml-auto">
-              <li class="nav-link text-light">
+              <li class="nav-link text-info">
                 <%= link_to "新規登録", new_user_registration_path, class: "text-info" %>
+                <i class="fa-solid fa-pen-to-square"></i>
               </li>
-              <li class="nav-link text-light">
+              <li class="nav-link text-info">
                 <%= link_to "ログイン", new_user_session_path, class: "text-info" %>
+                <i class="fa-solid fa-arrow-right-to-bracket"></i>
               </li>
             </ul>
           </div>
