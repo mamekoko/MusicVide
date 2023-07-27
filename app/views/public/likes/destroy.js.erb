@@ -1,1 +1,1 @@
-$('#like<%= @post_image.id %>').html("<%= j(render partial 'likes/like', locals: post_image: @post_image ) %>");
+$('#favorite_buttons_<%= @book.id %>').html("<%= j(render "favorites/favorite", book: @book) %>");
