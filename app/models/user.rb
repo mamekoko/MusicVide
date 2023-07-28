@@ -31,9 +31,6 @@ class User < ApplicationRecord
     suspended
   end
 
-  def liked_by?(post_image_id)
-    likes.where(post_image_id: post_image_id).exists?
-  end
 
   def get_profile_image(width, height)
     unless profile_image.attached?

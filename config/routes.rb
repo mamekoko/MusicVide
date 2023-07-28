@@ -19,7 +19,7 @@ Rails.application.routes.draw do
     root "homes#top"
 
     resources :post_images, only: [:index, :show, :new, :create, :edit, :update, :destroy] do
-      resources :likes, only: [:create, :destroy]
+      resource :likes, only: [:create, :destroy]
       resources :post_comments, only: [:create, :destroy]
     end
     resources :users, only: [:show, :edit, :update] do

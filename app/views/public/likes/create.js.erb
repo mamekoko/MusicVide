@@ -1,1 +1,1 @@
-$('#like-<%= @likes.post_image_id %>').html("<%= j(render 'likes/like', post_image: @likes.post_image ) %>");
+$('#like_buttons_<%= @post_image.id %>').html("<%= j(render "public/likes/like", post_image: @post_image) %>");

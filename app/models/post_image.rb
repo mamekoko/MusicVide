@@ -4,7 +4,6 @@ class PostImage < ApplicationRecord
   belongs_to :user
 
   has_many :likes, dependent: :destroy
-  has_many :liked_users, through: :likes, source: :user
 
   has_many :post_comments, dependent: :destroy
 
@@ -13,7 +12,7 @@ class PostImage < ApplicationRecord
   validates :image, presence: true
 
   def liked_by?(user, post_iamge)
-    likes.where(post_image_id: post_image.id).exists?
+    likes.where(user_id: user.id).exists?
   end
 
   def get_image

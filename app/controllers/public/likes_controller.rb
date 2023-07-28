@@ -1,16 +1,18 @@
 class Public::LikesController < ApplicationController
 
+  before_action :authenticate_user!
+
   def create
-    post_image = PostImage.find(params[:post_image_id])
-    @likes = current_user.likes.new(post_image_id: post_image.id)
-    @likes.save
+    @post_image = PostImage.find(params[:post_image_id])
+    like = current_user.likes.new(post_image_id: @post_image.id)
+    like.save
     #render 'replace_btn'
   end
 
   def destroy
-    post_image = PostImage.find(params[:post_image_id])
-    @likes = current_user.likes.find_by(post_image_id: post_image.id)
-    @likes.destroy
+    @post_image = PostImage.find(params[:post_image_id])
+    like = current_user.likes.find_by(post_image_id: @post_image.id)
+    like.destroy
     #render 'replace_btn'
   end
 

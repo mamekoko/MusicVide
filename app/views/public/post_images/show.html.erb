@@ -15,7 +15,7 @@
           <span><i class="fa-regular fa-calendar-days"></i><%= @post_image.created_at.strftime('%Y/%m/%d') %> ｜ </span>
           <span><i class="fa-regular fa-comment"></i><%= @post_image.post_comments.count %> ｜ </span>
           <% @post_images.each do |post_image| %>
-          <span class=<%= "likes-" + post_image.id.to_s %> >
+          <span id="like_buttons_<%= post_image.id %>" >
             <%= render "public/likes/like", post_image: post_image %>
            ｜ </span>
           <% end %>
