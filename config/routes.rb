@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  devise_for :admin_users, controllers: {
+  devise_for :admin_users, path: 'admins', controllers: {
     sessions: 'admins/sessions',
     passwords: 'admins/passwords',
     registrations: 'admins/registrations'
@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  namespace :admin do
+  namespace :admins do
     resources :users, only: [:index, :show] do
       member do
         patch :toggle_suspended
@@ -18,6 +18,7 @@ Rails.application.routes.draw do
 
   scope module: 'public' do
     root "homes#top"
+    get "search" => "searches#search"
 
     resources :post_images, only: [:index, :show, :new, :create, :edit, :update, :destroy] do
       resource :likes, only: [:create, :destroy]

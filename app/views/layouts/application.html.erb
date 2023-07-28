@@ -25,6 +25,9 @@
         </strong>
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ml-auto">
+
+              <%= render 'public/searches/search' %>
+
               <li class="nav-link text-info">
                 <%= link_to '投稿', new_post_image_path, class: "text-info" %>
                 <i class="fa-solid fa-plus"></i>
@@ -44,6 +47,10 @@
             </ul>
           </div>
         </div>
+      <% elsif admins_signed_in? %>
+        <li>
+          <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "text-info" %>
+        </li>
       <% else %>
         <div class="container">
         <strong>
