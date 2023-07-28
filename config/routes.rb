@@ -1,13 +1,14 @@
 Rails.application.routes.draw do
 
   devise_for :admin_users, controllers: {
-    sessions: 'admin/sessions'
+    sessions: 'admins/sessions',
+    passwords: 'admins/passwords',
+    registrations: 'admins/registrations'
   }
 
   devise_for :users
 
   namespace :admin do
-    get 'sign_in', to: 'sessions#new'
     resources :users, only: [:index, :show] do
       member do
         patch :toggle_suspended
