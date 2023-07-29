@@ -47,10 +47,22 @@
             </ul>
           </div>
         </div>
-      <% elsif admins_signed_in? %>
-        <li>
-          <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "text-info" %>
-        </li>
+        <% elsif admin_user_signed_in? %>
+          <strong>
+            <%= link_to "Scentopia", root_path, class: "navbar-brand text-info" %>
+          </strong>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-link text-info">
+                <%= link_to "会員一覧", admins_users_path, class: "text-info" %>
+                <i class="fa-regular fa-user"></i>
+              </li>
+              <li class="nav-link text-info">
+                <%= link_to "ログアウト", destroy_admin_user_session_path, method: :delete, class: "text-info" %>
+                <i class="fa-solid fa-arrow-right-from-bracket"></i>
+              </li>
+            </ul>
+          </div>
       <% else %>
         <div class="container">
         <strong>

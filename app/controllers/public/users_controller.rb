@@ -19,6 +19,7 @@ class Public::UsersController < ApplicationController
 
   def likes
     @user = User.find(params[:id])
+    @users = @user.post_images.page(params[:page])
     @liked_post_images = @user.liked_post_images
   end
 

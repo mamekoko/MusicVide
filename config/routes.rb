@@ -9,11 +9,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   namespace :admins do
-    resources :users, only: [:index, :show] do
-      member do
-        patch :toggle_suspended
-      end
-    end
+    resources :users, only: [:index, :show] 
   end
 
   scope module: 'public' do

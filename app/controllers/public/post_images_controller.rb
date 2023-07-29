@@ -1,4 +1,7 @@
 class Public::PostImagesController < ApplicationController
+
+  before_action :authenticate_admin!, only: [:destroy]
+
   def new
     @post_image = PostImage.new
   end
@@ -23,7 +26,6 @@ class Public::PostImagesController < ApplicationController
 
   def show
     @post_image = PostImage.find(params[:id])
-    @post_images = PostImage.all
     @post_comment = PostComment.new
   end
 
@@ -50,6 +52,10 @@ class Public::PostImagesController < ApplicationController
 
   def post_image_params
     params.require(:post_image).permit(:title, :image, :caption, :is_public)
+  end
+
+  def authenticate_admin!
+    redirect_to root_path, alert: '管理者権限がありません。' unless current_user.admin?
   end
 
 end
