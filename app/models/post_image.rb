@@ -11,7 +11,7 @@ class PostImage < ApplicationRecord
   validates :title, presence: true
   validates :image, presence: true
 
-  def liked_by?(user)
+  def liked_by?(user, post_image)
     likes.where(user_id: user.id).exists?
   end
 
